@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="static/docs.min.css" rel="stylesheet">
+    <!--[if lt IE 9]><script src="http://v3.bootcss.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+<textarea style="display: none;" id="mdinput" title="write md here">
+
+# Easy Markdown Page
+Easy Markdown Page is a converter. It can cover markdown to a nice web page.
+
+The style is [getbootstrap](http://getbootstrap.com/getting-started/).
+
+The markdown converter is [showdownjs](https://github.com/showdownjs/showdown).
+
+
+## Getting Started
+
+Prerequisites
+
+* markdown
+* html
+
+## Using
+
+Download index.html and load right static files.
+
+Write markdown on textarea.
+
+Then view the page on your browser.
+
+## Markdown requirement
+
+You need write 3 partment.
+
+1. Header
+```
+# title
+something something
+```
+
+2. Body
+```
+something something
+```
+
+
+3. Footer
+```
+------
+something something
+```
+------
+Fork me <a href="https://github.com/wilon/easy-markdown-page" target="_blank">wilon/easy-markdown-page</a>
+
+</textarea>
+    <div class="bs-docs-header" id="content"> <div class="container" id="header"> </div> </div>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-9" role="main"> <div class="bs-docs-section" id="body"> </div> </div>
+            <div class="col-md-3"> <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary"> <ul class="nav bs-docs-sidenav" id="navbar"> </ul> <a class="back-to-top" href="#top"> Return Top </a> </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bs-docs-footer" role="contentinfo">
+        <div class="container" id="footer"> </div>
+    </footer>
+    <script src="static/jquery.min.js"></script>
+    <script src="static/docs.min.js"></script>
+    <script src="static/showdown.min.js"></script>
+    <script type="text/javascript">
+        var converter = new showdown.Converter();
+        String.prototype.trim = function() {
+            return this.replace(/(^\s*)|(\s*$)/g, '');
+        };
+        var mdinput = $('#mdinput').text().trim(),
+            x = mdinput.indexOf('##'),
+            y = mdinput.lastIndexOf('------'),
+            headerInput = mdinput.substr(0, x).trim(),
+            footerInput = mdinput.substr(y + 6).trim();
+            bodyInput = mdinput.substr(x, y - x).trim();
+        // header & footer
+        $('#header').html(converter.makeHtml(headerInput));
+        $('#footer').html(converter.makeHtml(footerInput));
+        // body
+        var dom = '<div>' + converter.makeHtml(bodyInput) + '</div>',
+            bodyHtml = '',
+            tmpBar = [];
+        $(dom).children().map(function(index) {
+            var tagName = $(this).prop('tagName');
+            if (/H\d+/.test(tagName) == true) {
+                var id = MD5($(this).text()).substr(0, 6) + index;
+                if (tagName == 'H2' && tmpBar.length != 0) {
+                    generateBar(tmpBar);
+                    tmpBar = [];
+                }
+                tmpBar.push({
+                    id: id,
+                    text: $(this).text()
+                });
+                $(this).attr('id', id);
+            }
+            bodyHtml += $(this).prop("outerHTML");
+            if (index == $(dom).children().length - 1) {
+                generateBar(tmpBar);
+            }
+            return;
+        });
+        $('#body').html(bodyHtml);
+
+        function generateBar(liArr) {
+            if (liArr.length == 0) return;
+            var h2 = $('<a/>', {
+                    href: '#' + liArr[0].id,
+                    text: liArr[0].text
+                });
+            var li = '';
+            liArr.map(function(elem, index) {
+                if (index == 0) return;
+                li += `<li><a href="#${elem.id}">${elem.text}</a></li>`;
+                return;
+            });
+            var barli = `<li><a href="#${liArr[0].id}">${liArr[0].text}</a><ul class="nav" style="display: block;">${li}</ul></li>`;
+            $('#navbar').append(barli);
+        }
+    </script>
+</body>
+</html>
