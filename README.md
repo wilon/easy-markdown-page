@@ -1,5 +1,8 @@
 # Easy Markdown Page
+
 Easy Markdown Page is a converter. It can cover markdown to a nice web page.
+
+Example: [oh-my-zsh](https://rawgit.com/wilon/easy-markdown-page/master/oh-my-zsh.html).
 
 The style is [getbootstrap](http://getbootstrap.com/getting-started/).
 
@@ -26,21 +29,32 @@ Then view the page on your browser.
 You need write 3 partment.
 
 1. Header
-```
-# title
-something something
-```
+
+    ```
+    # title
+    something something
+    ```
 
 2. Body
-```
-something something
-```
 
+
+    ```
+    ## nav1
+        something something
+    ### nav11
+        something something
+    ## nav2
+        something something
+    ### nav21
+        something something
+    ```
 
 3. Footer
-```
-------
-something something
-```
+
+    ```
+        ------
+        something something
+    ```
+
 ------
 Fork me <a href="https://github.com/wilon/easy-markdown-page" target="_blank">wilon/easy-markdown-page</a>
