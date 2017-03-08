@@ -19,6 +19,7 @@ Prerequisites
 ## Using
 
 Download `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/index.html`
+or `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/simple.html`
 
 Write markdown on textarea.
 

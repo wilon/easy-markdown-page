@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]><script src="http://v3.bootcss.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+<textarea style="display: none;" id="mdinput" title="write md here">
+
+# Easy Markdown Page
+
+Easy Markdown Page is a converter. It can cover markdown to a nice web page.
+
+Example: [oh-my-zsh](https://wilon.github.io/easy-markdown-page/oh-my-zsh.html).
+
+The style is [getbootstrap](http://getbootstrap.com/getting-started/).
+
+The markdown converter is [showdownjs](https://github.com/showdownjs/showdown).
+
+
+## Getting Started
+
+Prerequisites
+
+* markdown
+* html
+
+## Using
+
+Download `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/index.html`
+
+Write markdown on textarea.
+
+Then view the page on your browser.
+
+## Markdown requirement
+
+You need write 3 partment.
+
+1. Header
+
+    ```
+    # title
+    something something
+    ```
+
+2. Body
+
+
+    ```
+    ## nav1
+        something something
+    ### nav11
+        something something
+    ## nav2
+        something something
+    ### nav21
+        something something
+    ```
+
+3. Footer
+
+    ```
+        ------
+        something something
+    ```
+
+------
+Fork me <a href="https://github.com/wilon/easy-markdown-page" target="_blank">wilon/easy-markdown-page</a>
+
+</textarea>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-9" role="main">
+                <div class="bs-docs-section" id="body"> </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://wilon.github.io/easy-markdown-page/static/jquery.min.js"></script>
+    <script src="https://wilon.github.io/easy-markdown-page/static/showdown.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var converter = new showdown.Converter(),
+                mdinput = $('#mdinput').text().trim(),
+                bodyHtml = '<div>' + converter.makeHtml(mdinput) + '</div>';
+            $('#body').html(bodyHtml);
+        })
+    </script>
+</body>
+</html>
