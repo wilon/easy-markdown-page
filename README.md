@@ -2,7 +2,9 @@
 
 Easy Markdown Page is a converter. It can cover markdown to a nice web page.
 
-Example: [oh-my-zsh](https://wilon.github.io/easy-markdown-page/oh-my-zsh.html).
+Example:
+
+  [oh-my-zsh](https://wilon.github.io/easy-markdown-page/oh-my-zsh.html).
 
 The style is [getbootstrap](http://getbootstrap.com/getting-started/).
 
@@ -18,7 +20,7 @@ Prerequisites
 
 ## Using
 
-Download `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/index.html`
+Download `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/example.html`
 or `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/simple.html`
 
 Write markdown on textarea.

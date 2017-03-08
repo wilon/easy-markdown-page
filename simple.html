@@ -14,6 +14,9 @@
 </head>
 <body>
 <textarea style="display: none;" id="mdinput" title="write md here">
+
+
+
 # Easy Markdown Page
 
 Easy Markdown Page is a converter. It can cover markdown to a nice web page.
@@ -34,7 +37,7 @@ Prerequisites
 
 ## Using
 
-Download `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/index.html`
+Download `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/example.html`
 or `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/simple.html`
 
 Write markdown on textarea.
@@ -76,6 +79,8 @@ You need write 3 partment.
 ------
 Fork me <a href="https://github.com/wilon/easy-markdown-page" target="_blank">wilon/easy-markdown-page</a>
 
+
+
 </textarea>
     <div class="container bs-docs-container">
         <div class="row">
@@ -86,13 +91,6 @@ Fork me <a href="https://github.com/wilon/easy-markdown-page" target="_blank">wi
     </div>
     <script src="https://wilon.github.io/easy-markdown-page/static/jquery.min.js"></script>
     <script src="https://wilon.github.io/easy-markdown-page/static/showdown.min.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            var converter = new showdown.Converter(),
-                mdinput = $('#mdinput').text().trim(),
-                bodyHtml = '<div>' + converter.makeHtml(mdinput) + '</div>';
-            $('#body').html(bodyHtml);
-        })
-    </script>
+    <script src="https://wilon.github.io/easy-markdown-page/static/generate.js"></script>
 </body>
 </html>
