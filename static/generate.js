@@ -7,9 +7,10 @@ $(function(){
         return this.replace(/(^\s*)|(\s*$)/g, '');
     };
 
-    var converter = new showdown.Converter();
     showdown.setOption('tables', true)
             .setOption('tablesHeaderId', true)
+
+    var converter = new showdown.Converter();
 
     var mdinput = $('#mdinput').text().trim(),
         x = mdinput.indexOf('##'),
@@ -51,6 +52,7 @@ $(function(){
     } else {
         $('#body').html(converter.makeHtml(mdinput));
         $(document).attr('title', $('#body').find('h1').text());
+        $('#body').find('table').addClass('table table-bordered table-striped');
     }
 
     function generateBar(liArr) {
