@@ -20,8 +20,14 @@ Prerequisites
 
 ## Using
 
-Download `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/example.html`
-or `https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/simple.html`
+Download :
+```
+https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/example.html
+```
+Or:
+```
+https://raw.githubusercontent.com/wilon/easy-markdown-page/gh-pages/simple.html
+```
 
 Write markdown on textarea.
 
