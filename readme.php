@@ -26,7 +26,7 @@ if ($style === 'bootcss') {
 }
 
 // js file
-$src = $_GET['src'] ? 'https://wilon.github.io' : 'http://wilon.oschina.io';
+$src = 'https://wilon.github.io';
 $jquery = "$src/easy-markdown-page/static/jquery.min.js";
 $docs = "$src/easy-markdown-page/static/docs.v0.3.min.js";
 $showdown = "$src/easy-markdown-page/static/showdown.min.js";
@@ -77,11 +77,11 @@ $generate = "$src/easy-markdown-page/static/generate.js";
         <div class="container" id="footer"> </div>
     </footer>
     <?php endif ?>
-    <script src="<?php echo $jquery ?>"></script>
-    <script src="<?php echo $showdown ?>"></script>
+    <script type="text/javascript" src="<?php echo $jquery ?>"></script>
+    <script type="text/javascript" src="<?php echo $showdown ?>"></script>
     <?php if ($style === 'bootcss'): ?>
-        <script src="<?php echo $docs; ?>"></script>
+        <script type="text/javascript" src="<?php echo $docs; ?>"></script>
     <?php endif ?>
-    <script src="<?php echo $generate ?>"></script>
+    <script type="text/javascript" src="<?php echo $generate ?>"></script>
 </body>
 </html>
