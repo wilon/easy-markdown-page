@@ -70,4 +70,7 @@ $(function(){
         var barli = `<li><a href="#${liArr[0].id}">${liArr[0].text}</a><ul class="nav" style="display: block;">${li}</ul></li>`;
         $('#navbar').append(barli);
     }
+
+    hljs.initHighlightingOnLoad();
+    anchors.add();
 })

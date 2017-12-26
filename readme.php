@@ -14,23 +14,30 @@ if ($argv) {
     $_GET['github'] = $argv[3];
 }
 
-$file = "./{$_GET['file']}.md" ?: './README.md';
+$fileName = current(array_keys($_GET)) ?: $_GET['file'];
+$file = "./{$fileName}.md" ?: './README.md';
 $markdownContent = @file_get_contents($file) ?: '## File not found.';
+
+$src = 'https://wilon.github.io/easy-markdown-page';
+$src = '.';
 
 // css file
 $style = $_GET['style'] ?: 'default';
 if ($style === 'bootcss') {
-    $css = "https://wilon.github.io/easy-markdown-page/static/docs.min.css";
+    $css = "$src/static/docs.min.css";
+} else if ($style === 'bootstrap') {
+    $css = "$src/static/docs.min.css";
 } else {
-    $css = "https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css";
+    $css = "$src/static/style.css";
 }
+$codecss = "$src/static/github.css";
 
 // js file
-$src = 'https://wilon.github.io';
-$jquery = "$src/easy-markdown-page/static/jquery.min.js";
-$docs = "$src/easy-markdown-page/static/docs.v0.3.min.js";
-$showdown = "$src/easy-markdown-page/static/showdown.min.js";
-$generate = "$src/easy-markdown-page/static/generate.js";
+$jquery = "$src/static/jquery.min.js";
+$anchor = "$src/static/anchor.min.js";
+$docs = "$src/static/docs.v0.3.min.js";
+$showdown = "$src/static/showdown.min.js";
+$generate = "$src/static/generate.js";
 
 ?>
 <!DOCTYPE html>
@@ -40,6 +47,7 @@ $generate = "$src/easy-markdown-page/static/generate.js";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<?php echo $css; ?>" rel="stylesheet">
+    <link href="<?php echo $codecss; ?>" rel="stylesheet">
     <!--[if lt IE 9]><script src="http://v3.bootcss.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
@@ -61,7 +69,7 @@ $generate = "$src/easy-markdown-page/static/generate.js";
     <div class="container bs-docs-container">
         <div class="row">
             <div class="col-md-9" role="main">
-                <div class="bs-docs-section" id="body"> </div>
+                <div class="bs-docs-section markdown-body" id="body"> </div>
             </div>
             <?php if ($style === 'bootcss'): ?>
                 <div class="col-md-3">
@@ -78,7 +86,9 @@ $generate = "$src/easy-markdown-page/static/generate.js";
     </footer>
     <?php endif ?>
     <script type="text/javascript" src="<?php echo $jquery ?>"></script>
+    <script type="text/javascript" src="<?php echo $anchor ?>"></script>
     <script type="text/javascript" src="<?php echo $showdown ?>"></script>
+    <script src="./static/highlight.pack.js"></script>
     <?php if ($style === 'bootcss'): ?>
         <script type="text/javascript" src="<?php echo $docs; ?>"></script>
     <?php endif ?>
