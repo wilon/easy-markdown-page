@@ -64,13 +64,16 @@ $(function(){
         var li = '';
         liArr.map(function(elem, index) {
             if (index == 0) return;
-            li += `<li><a href="#${elem.id}">${elem.text}</a></li>`;
+            li += '<li><a href="#'+elem.id+'">'+elem.text+'</a></li>';
             return;
         });
-        var barli = `<li><a href="#${liArr[0].id}">${liArr[0].text}</a><ul class="nav" style="display: block;">${li}</ul></li>`;
+        var barli = '<li><a href="#'+liArr[0].id+'">'+liArr[0].text+'</a><ul class="nav" style="display: block;">'+li+'</ul></li>';
         $('#navbar').append(barli);
     }
 
-    hljs.initHighlightingOnLoad();
-    anchors.add();
+    try {
+        hljs.initHighlightingOnLoad();
+        anchors.add();
+    } catch(err){
+    }
 })
